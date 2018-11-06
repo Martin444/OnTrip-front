@@ -23,10 +23,10 @@ class FlavorForm extends React.Component {
             </label>
             <select className="cell" value={this.state.value} onChange={this.handleChange}>
               
-                <option className="op" value="1">1</option>
-                <option className="op" value="2">2</option>
-                <option className="op" value="3">3</option>
-                <option className="op" value="4">4</option>  
+                <option className="op" value="0">1</option>
+                <option className="op" value="1">2</option>
+                <option className="op" value="2">3</option>
+                <option className="op" value="3">4</option>  
             </select>
          
         </form>
