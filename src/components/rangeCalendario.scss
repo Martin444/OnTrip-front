@@ -1,0 +1,23 @@
+.calendar {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #9999;
+    position: relative;
+    align-content: flex-end;
+}
+
+.calendar:focus {
+
+    border-bottom: 2px solid #ffaa3b;
+    font-weight: bold;
+    transition: .5s all; 
+}
+
+.calendar-contenedor label {
+    position: absolute;
+    top: 110px;
+    left: 2px;
+    pointer-events: none;
+    color: transparent;
+}
