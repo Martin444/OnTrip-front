@@ -10,10 +10,10 @@ const contenido = () => (
 
         <div className="menu__right">
             <ul className="menu__list">
-                <li className="menu__list-item"><a className="menu__link menu__link--active" href="https://reactjs.org/docs/forms.html">Inicio</a></li>
-                <li className="menu__list-item"><a className="menu__link" href="https://reactjs.org/docs/forms.html">Mi perfil</a></li>
-                <li className="menu__list-item"><a className="menu__link" href="https://reactjs.org/docs/forms.html">Mi reserva</a></li>
-                <li className="menu__list-item"><a className="menu__link" href="https://reactjs.org/docs/forms.html">Ayuda</a></li>
+                <li className="menu__list-item"><a className="menu__link menu__link--active" href="#">Inicio</a></li>
+                <li className="menu__list-item"><a className="menu__link" href="#">Mi perfil</a></li>
+                <li className="menu__list-item"><a className="menu__link" href="#">Mi reserva</a></li>
+                <li className="menu__list-item"><a className="menu__link" href="#">Ayuda</a></li>
             </ul>
 
             <button className="menu__search-button"></button>
