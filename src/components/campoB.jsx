@@ -1,17 +1,19 @@
 import React from 'react';
-// import {Typeahead} from 'react-bootstrap-typeahead';
-import 'react-bootstrap-typeahead/css/Typeahead.css';
-// import Typeahead from 'react-typeahead';
-// import Downshift from 'downshift/preact';
+import 'react-reflux';
 import './campoB.scss';
+import Consult from './consult';
+
 
 //creo el metodo que guardará el valor inicial del Input.
 class inputChanges extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = { value: '', Estilo: {} };
-        
+    
     }
+
+    
 
 
     //funcion que va a guardar el valor que digite el usuario.
@@ -44,25 +46,21 @@ class inputChanges extends React.Component {
         return this.state.value;
     };
 
-    render() {
+   
 
-        return (
+    render() { 
+
+
+    
+            return(
             <div className="place">
-            
-
-            {/* <Typeahead
-                onChange={(selected) => {
-                    this.setState({selected});
-                }}
-                options={['joa', 'negro', 'ecmascript']}
-                selected={this.state.selected}
-                caseSensitive
-                ignoreDiacritics = { false } 
-            /> */}
                 <input className="dir" type="text" onChange={this.hdchange} value={this.state.value}/>
-                <label style={this.state.Estilo}>DESTINO</label>
-            </div>
-        );
+                    <label style={this.state.Estilo}>DESTINO</label>
+                    <Consult/>
+             </div>
+
+            
+          );
     }
 }
 

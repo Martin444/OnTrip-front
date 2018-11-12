@@ -1,11 +1,12 @@
 import React from 'react'
+import Table from './table'
 
 export default class contenedor extends React.Component {
     render(){
         return (
             <div>
                 <form className="caja">
-                    <input type="text"/>
+                   <Table/>
                 </form>
             </div>
         );
