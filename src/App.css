@@ -18,6 +18,7 @@ body{
 }
 
 .center {
+    position: fixed;
     display: flex;
     justify-content: center;
 
@@ -28,13 +29,15 @@ body{
     box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
     margin: 2px;
-    width: 100%;
+    width: 40%;
     height: 40%;
-    display: block;
-    justify-content: end;
-    top: 90px;
+    display: inline-table;
+    align-items: center;
+    justify-content: center;
+    top: 20%;
+    left: 25%;
     padding: 30px 40px;
-    position: relative;
+    position: fixed;
 }
 
 .cal-sel {

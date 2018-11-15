@@ -56,6 +56,9 @@ class calendar extends React.Component {
               isClearable = {true}
               dateFormat = "DD/MM/YYYY"
               name = {this.state.name}
+              minDate={moment()}
+                maxDate={moment().add(5, "months")}
+                showDisabledMonthNavigation
               />
               <label style= {this.state.Estilo}>HASTA</label>
             </div>
