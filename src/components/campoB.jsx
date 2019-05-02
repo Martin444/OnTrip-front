@@ -9,14 +9,12 @@ class inputChanges extends React.Component {
     constructor(props) {
         super(props)
         this.state = { Loc: null , destino: '', EstiloDes: {} };
-
-        this.hdChangeDestino = this.hdChangeDestino.bind(this)
     }
 
-    hdChangeDestino = (e) =>{
-        const {destino,valor} = e.target
+    hdChangeDestino = (e) => {
+        const { value } = e.target
         let Style2 = {}
-        if (valor >= 1) {
+        if (value >= 1) {
             Style2 = {
                 top: '45px',
                 left: '0',
@@ -34,9 +32,8 @@ class inputChanges extends React.Component {
             };
         }
         
-        this.setState({ [destino]: valor, EstiloDes: Style2  })
-        console.log(destino)
-        
+        this.setState({ destino: value, EstiloDes: Style2  })
+
       }
 
 
