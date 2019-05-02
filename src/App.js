@@ -10,14 +10,51 @@ import './App.css';
 
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = { origen:'', Estilo: {}, EstiloDes: {}, destino: '', passMen: null, passMax: null, 
+    CalInicio: null, CalFin: null}
+  }
+
+  hdchange = (e) => {
+    const { value } = e.target
+    let Style = {}
+    if (value.length >= 1) {
+       Style = {
+            top: '-15px',
+            left: '0',
+            fontSize: '15px',
+            fontWeight: 'bold',
+            color: '#ffaa3b',
+            transition: '.2s all'
+        };
+    } else {
+        Style = {
+            position: 'absolute',
+            top: '5px',
+            left: '2px',
+            color: '#504f4e3f'
+        };
+    }
+    this.setState({ origen: value, Estilo: Style });
+}
+
+
+
+
   render() {
+
+    const {origen, Estilo} = this.state
     return (
       <div className="App">
 
         <BoxSearch/>
         <br/>
           <div className="box">
-            <CampoB/>
+            <CampoB origen = {origen}
+            Estilo = { Estilo}
+            hdchange ={this.hdchange}
+            />
               <br/> <br/>
               <div className="cal-sel">
             <CamSelect/>

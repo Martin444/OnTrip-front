@@ -19,14 +19,14 @@ class calendar extends React.Component {
   
       let Style;
   
-      if (this.handleChange === true){
+      if (this.handleChange){
             console.log('hola');
           Style = {  
             position: 'absolute',
-            top: '170px',
+            top: '185px',
             left: '1px',
             pointerEvents: 'none',
-            fontSize: '12px',
+            fontSize: '15px',
             fontWeight: 'bold',
             color: '#ffaa3b',
             transition: '.5s all'
@@ -34,7 +34,7 @@ class calendar extends React.Component {
       }else {
         Style = {
           position: 'absolute',
-            top: '180px',
+            top: '185px',
             left: '1px',
             pointerEvents: 'none',
             fontSize: '15px',

@@ -1,40 +1,24 @@
 import React from 'react';
 import 'react-reflux';
 import './campoB.scss';
-import Select from 'react-select';
 
 const API = 'http://31.220.59.183:8080/locations?filter=';
 // const DEFAULT_QUERY = "PAR";
-
-//creo el metodo que guardará el valor inicial del Input.
 class inputChanges extends React.Component {
 
     constructor(props) {
-        super(props);
-        this.state = { value: '', Estilo: {}, Loc: null , isLoading: false };
-    
-        // this.getLoc();
+        super(props)
+        this.state = { Loc: null , destino: '', EstiloDes: {} };
+
+        this.hdChangeDestino = this.hdChangeDestino.bind(this)
     }
 
-    
-    // getLoc(){
-    //      fetch(API).then((res)=>{
-    //         res.json().then((res)=>{
-    //             console.log(res.data)
-    //             this.setState({Loc:res.data})
-    //         })
-    //     })
-        
-    // }
-
-    //funcion que va a guardar el valor que digite el usuario.
-    hdchange = (event) => {
-    // console.log(event.target.value);
-        let Style = {}
-        if (event.target.value.length >= 1) {
-            console.log('estado');
-           Style = {
-                top: '-15px',
+    hdChangeDestino = (e) =>{
+        const {destino,valor} = e.target
+        let Style2 = {}
+        if (valor >= 1) {
+            Style2 = {
+                top: '45px',
                 left: '0',
                 fontSize: '15px',
                 fontWeight: 'bold',
@@ -42,67 +26,77 @@ class inputChanges extends React.Component {
                 transition: '.2s all'
             };
         } else {
-            Style = {
+            Style2 = {
                 position: 'absolute',
-                top: '5px',
+                top: '45px',
                 left: '2px',
                 color: '#504f4e3f'
             };
         }
-        this.setState({ value: event.target.value, Estilo: Style });
-    }
+        
+        this.setState({ [destino]: valor, EstiloDes: Style2  })
+        console.log(destino)
+        
+      }
 
-    //para hacer peticiones a la API
-    getValue() {
-        return this.state.value;
-    };
 
-   
-
+    renderDestino(){
+        const {destino} = this.state
+        if(this.props.origen.length >= 5){
+            return(
+                <div>
+                    <input className="dest" list="browsers"
+                    onChange={this.hdChangeDestino}
+                    value={destino}/>
+                    <label className="labdes" style={this.state.EstiloDes}>DESTINO</label>
+                    <div>
+                        <datalist id="browsers">
+                                                {
+                            this.state.Loc ?
+                    this.state.Loc.map((items)=>
+                    <React.Fragment>
+                            <option className="lista" value={(items.name) + ", " + (items.address.countryName)}/>
+                        
+                    </React.Fragment>
+                                    )
+                                    :null
+                                                  }
+                        </datalist>
+                    </div>
+                </div>
+            )
+        }else{
+            console.log("No holiwis")
+        }
+      }
+    
     render() { 
 
-        
-        
-        this.state.value.length >= 3 ?
-            fetch(API + this.state.value)
-            .then((res)=>{
-                res.json()
-                .then((res)=>{
-                    res === 1 ?
-                    console.log(res.data):
-                    this.setState({Loc:res.data})
-                    
-                    
-                    
-                })
-            }) 
-            
-        :
-        console.log("Sigue buscando")
-
-        
-
         return(
-        <div className="place">
-            <input className="dir" list="browsers"
-            onChange={this.hdchange} 
-            value={this.state.value}/>
-                <label style={this.state.Estilo}>DESTINO</label>
             <div>
-                <datalist id="browsers">
-                                        {
-                    this.state.Loc ?
-             this.state.Loc.map((items)=>
-            <React.Fragment>
-                    <option className="lista" value={(items.name) + ", " + (items.address.countryName)}/>
-                
-            </React.Fragment>
-                            )
-                            :null
-                                            }
-                </datalist>
+                <div className="place">
+                    <input className="dir" list="browsers"
+                    onChange={this.props.hdchange} 
+                    value={this.props.origen}/>
+                        <label className="labori" style={this.props.Estilo}>ORIGEN</label>
+                    <div>
+                        <datalist id="browsers">
+                                                {
+                            this.state.Loc ?
+                    this.state.Loc.map((items)=>
+                    <React.Fragment>
+                            <option className="lista" value={(items.name) + ", " + (items.address.countryName)}/>
+                        
+                    </React.Fragment>
+                                    )
+                                    :null
+                                                    }
+                        </datalist>
+                    </div>
+                    <br/>
+                    {this.renderDestino()}
+                </div>
             </div>
-        </div>
 );
 
 }
