@@ -1,8 +1,12 @@
 import React from 'react';
 import 'react-reflux';
+import CamSelect from './camSelect.jsx';
+import LamSelect from './lamSelect.jsx';
+import RangeCalendario from './rangeCalendario.js';
+import RangeCalendario2 from './rangeCalendario2';
 import './campoB.scss';
 
-const API = 'http://31.220.59.183:8080/locations?filter=';
+// const API = 'http://31.220.59.183:8080/locations?filter=';
 // const DEFAULT_QUERY = "PAR";
 class inputChanges extends React.Component {
 
@@ -14,9 +18,9 @@ class inputChanges extends React.Component {
     }
 
     hdChangeDestino = (e) =>{
-        const {destino,valor} = e.target
+        const {value} = e.target
         let Style2 = {}
-        if (valor >= 1) {
+        if (value.length >= 1) {
             Style2 = {
                 top: '45px',
                 left: '0',
@@ -33,22 +37,36 @@ class inputChanges extends React.Component {
                 color: '#504f4e3f'
             };
         }
-        
-        this.setState({ [destino]: valor, EstiloDes: Style2  })
-        console.log(destino)
-        
+    
+        this.setState({ destino: value,  EstiloDes: Style2  })
       }
 
+    renderSelector(){
+        
+        if(this.props.destino.length >= 5){
+            return(
+                <div>
+                    <CamSelect/>
+                    <br/>
+                    <LamSelect/>
+                    <br/>
+                    <RangeCalendario className="calendario"/>
+                    <br/> <br/>
+                    <RangeCalendario2/>
+                </div>
+            )
+        }
+    }
 
-    renderDestino(){
-        const {destino} = this.state
+      renderDestino2(){
+        const {destino, hdChangeDestino} = this.props
         if(this.props.origen.length >= 5){
             return(
                 <div>
                     <input className="dest" list="browsers"
-                    onChange={this.hdChangeDestino}
+                    onChange={hdChangeDestino}
                     value={destino}/>
-                    <label className="labdes" style={this.state.EstiloDes}>DESTINO</label>
+                    <label className="labdes" style={this.props.EstiloDes}>DESTINO</label>
                     <div>
                         <datalist id="browsers">
                                                 {
@@ -65,16 +83,13 @@ class inputChanges extends React.Component {
                     </div>
                 </div>
             )
-        }else{
-            console.log("No holiwis")
         }
       }
     
     render() { 
-
         return(
             <div>
-                <div className="place">
+                <div className="place"> 
                     <input className="dir" list="browsers"
                     onChange={this.props.hdchange} 
                     value={this.props.origen}/>
@@ -94,7 +109,9 @@ class inputChanges extends React.Component {
                         </datalist>
                     </div>
                     <br/>
-                    {this.renderDestino()}
+                    {this.renderDestino2()}
+                    <br/>
+                    {this.renderSelector()}
                 </div>
             </div>
 );

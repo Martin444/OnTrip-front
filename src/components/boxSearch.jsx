@@ -10,10 +10,10 @@ const contenido = () => (
 
         <div className="menu__right">
             <ul className="menu__list">
-                <li className="menu__list-item"><a className="menu__link menu__link--active" href="#">Inicio</a></li>
-                <li className="menu__list-item"><a className="menu__link" href="#">Mi perfil</a></li>
-                <li className="menu__list-item"><a className="menu__link" href="#">Mi reserva</a></li>
-                <li className="menu__list-item"><a className="menu__link" href="#">Ayuda</a></li>
+                <li className="menu__list-item"><a className="menu__link menu__link--active" href="/">Inicio</a></li>
+                <li className="menu__list-item"><a className="menu__link" href="/">Mi perfil</a></li>
+                <li className="menu__list-item"><a className="menu__link" href="/">Mi reserva</a></li>
+                <li className="menu__list-item"><a className="menu__link" href="/">Ayuda</a></li>
             </ul>
         </div>
     </nav>

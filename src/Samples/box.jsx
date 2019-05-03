@@ -1,15 +1,11 @@
-import React from 'react'
-import Table from './table'
+import React, { Component } from 'react'
 
-export default class contenedor extends React.Component {
-    render(){
-        return (
-            <div>
-                <form className="caja">
-                   <Table/>
-                </form>
-            </div>
-        );
-
-    }
+export default class box extends Component {
+  render() {
+    return (
+      <div>
+        
+      </div>
+    )
+  }
 }

@@ -23,7 +23,7 @@ class calendar extends React.Component {
             console.log('hola');
           Style = {  
             position: 'absolute',
-            top: '185px',
+            top: '280px',
             left: '1px',
             pointerEvents: 'none',
             fontSize: '15px',
@@ -34,7 +34,7 @@ class calendar extends React.Component {
       }else {
         Style = {
           position: 'absolute',
-            top: '185px',
+            top: '285px',
             left: '1px',
             pointerEvents: 'none',
             fontSize: '15px',
