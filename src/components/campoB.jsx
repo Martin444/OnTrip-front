@@ -12,7 +12,8 @@ class inputChanges extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = { Loc: null , destino: '', EstiloDes: {} };
+        this.state = { Loc: null , 
+                        EstiloDes: {} };
 
         this.hdChangeDestino = this.hdChangeDestino.bind(this)
     }
@@ -42,17 +43,24 @@ class inputChanges extends React.Component {
       }
 
     renderSelector(){
-        
+        const {passMen, passMax, CalInicio, CalFin, handleChangeSelect, handleChangeSelect2} = this.props
         if(this.props.destino.length >= 5){
             return(
                 <div>
-                    <CamSelect/>
+                    <CamSelect 
+                    handleChangeSelect={handleChangeSelect}
+                    passMax={passMax}/>
                     <br/>
-                    <LamSelect/>
+                    <LamSelect 
+                    handleChangeSelect2={handleChangeSelect2}
+                    passMen={passMen}/>
                     <br/>
-                    <RangeCalendario className="calendario"/>
+                    <RangeCalendario 
+                    CalInicio = {CalInicio}
+                    className="calendario"/>
                     <br/> <br/>
-                    <RangeCalendario2/>
+                    <RangeCalendario2
+                    CalFin= {CalFin}/>
                 </div>
             )
         }
@@ -66,21 +74,20 @@ class inputChanges extends React.Component {
                     <input className="dest" list="browsers"
                     onChange={hdChangeDestino}
                     value={destino}/>
-                    <label className="labdes" style={this.props.EstiloDes}>DESTINO</label>
-                    <div>
-                        <datalist id="browsers">
-                                                {
-                            this.state.Loc ?
-                    this.state.Loc.map((items)=>
-                    <React.Fragment>
-                            <option className="lista" value={(items.name) + ", " + (items.address.countryName)}/>
-                        
-                    </React.Fragment>
-                                    )
-                                    :null
-                                                  }
-                        </datalist>
-                    </div>
+                        <label className="labdes" style={this.props.EstiloDes}>DESTINO</label>
+                            <div>
+                                <datalist id="browsers">
+                                {
+                                    this.state.Loc ?
+                                        this.state.Loc.map((items)=>
+                                            <React.Fragment>
+                                                <option className="lista" value={(items.name) + ", " + (items.address.countryName)}/>
+                                            </React.Fragment>
+                                            )
+                                                :null
+                                }
+                                </datalist>
+                            </div>
                 </div>
             )
         }
@@ -94,20 +101,19 @@ class inputChanges extends React.Component {
                     onChange={this.props.hdchange} 
                     value={this.props.origen}/>
                         <label className="labori" style={this.props.Estilo}>ORIGEN</label>
-                    <div>
-                        <datalist id="browsers">
-                                                {
-                            this.state.Loc ?
-                    this.state.Loc.map((items)=>
-                    <React.Fragment>
-                            <option className="lista" value={(items.name) + ", " + (items.address.countryName)}/>
-                        
-                    </React.Fragment>
-                                    )
-                                    :null
-                                                    }
-                        </datalist>
-                    </div>
+                            <div>
+                                <datalist id="browsers">
+                                         {
+                                        this.state.Loc ?
+                                             this.state.Loc.map((items)=>
+                                        <React.Fragment>
+                                             <option className="lista" value={(items.name) + ", " + (items.address.countryName)}/>
+                                        </React.Fragment>
+                                                           )
+                                          :null
+                                         }
+                                </datalist>
+                            </div>
                     <br/>
                     {this.renderDestino2()}
                     <br/>

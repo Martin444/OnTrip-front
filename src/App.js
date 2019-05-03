@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import BoxSearch from './components/boxSearch.jsx';
 import CampoB from './components/campoB';
-
-// import Box from './Samples/box';
 import './App.css';
 
 
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = { origen:'', Estilo: {}, EstiloDes: {}, destino: '', passMen: null, passMax: null, 
-    CalInicio: null, CalFin: null}
+    this.state = { origen:'', 
+                    Estilo: {}, 
+                    EstiloDes: {}, 
+                    destino: '', 
+                    passMen: '', passMax: '', 
+                    CalInicio: null, CalFin: null}
+    this.handleChangeSelect = this.handleChangeSelect.bind(this)
+    this.handleChangeSelect2 = this.handleChangeSelect2.bind(this)
   }
 
   hdchange = (e) => {
@@ -55,13 +59,23 @@ hdChangeDestino = (e) =>{
           color: '#504f4e3f'
       };
   }
-
   this.setState({ destino: value,  EstiloDes: Style2  })
+}
+
+handleChangeSelect(event) {
+  this.handleChangeSelect ?
+    this.setState({passMax: event.target.passMax}) && console.log(this.passMax)
+  : 
+  console.log(this.passMax)
+  }
+
+handleChangeSelect2(event) {
+  this.setState({passMen: event.target.passMen});
 }
 
 
   render() {
-    const {origen, Estilo, destino, EstiloDes} = this.state
+    const {origen, Estilo, destino, EstiloDes, passMen, passMax, CalFin, CalInicio} = this.state
     return (
       <div className="App">
         <BoxSearch/>
@@ -69,19 +83,18 @@ hdChangeDestino = (e) =>{
           <div className="box">
             <CampoB origen = {origen}
             destino = {destino}
+            passMen = {passMen}
+            passMax = {passMax}
+            CalFin = {CalFin}
+            CalInicio = {CalInicio}
             Estilo = {Estilo}
             EstiloDes={EstiloDes}
             hdChangeDestino={this.hdChangeDestino}
-            hdchange ={this.hdchange} //esta es el primer componente donde se encuentra el formulario
+            handleChangeSelect={this.handleChangeSelect}
+            handleChangeSelect2={this.handleChangeSelect2}
+            hdchange ={this.hdchange}
             />
             </div>
-              {/* <br/> <br/>
-              <div className="cal-sel">
-            <br/> 
-            
-              </div>
-           </div>
-           <Box className="estad"/> */}
       </div>
     );
   }
