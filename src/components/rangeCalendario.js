@@ -6,63 +6,22 @@ import './rangeCalendario.scss';
 // import moment = require('moment');
 
 class calendar extends React.Component {
-  constructor(...props){
-    super(...props); 
-      this.state ={StartDate: moment(), Estilo:{}};
-
-      this.handleChange = this.handleChange.bind(this);
-  }
-
-  
-
-  handleChange(data) {
-    
-
-    let Style;
-
-    if (this.handleChange === true){
-          console.log('hola');
-        Style = {  
-          position: 'absolute',
-          top: '40px',
-          left: '1px',
-          pointerEvents: 'none',
-          fontSize: '12px',
-          fontWeight: 'bold',
-          color: '#ffaa3b',
-          transition: '.5s all'
-        }
-    }else {
-      console.log('hola');
-      Style = {
-        position: 'absolute',
-          top: '200px',
-          left: '1px',
-          pointerEvents: 'none',
-          fontSize: '15px',
-          fontWeight: 'bold',
-          color: '#ffaa3b',
-          transition: '.5s all'
-      }
-    }
-this.setState ({ StartDate: data, Estilo: Style });
-  }
-
       render() {
+        const { CalInicio, EstiloCalendarioIn, handleChangeCalendarioIn } = this.props
         return (
           <div className="calendar-contenedor">
             <DatePicker
             className="calendar"
-            selected = {this.state.StartDate}
-            onChange = {this.handleChange}
+            selected = {CalInicio}
+            onChange = {handleChangeCalendarioIn}
             isClearable = {true}
             dateFormat = "DD/MM/YYYY"
-            name = {this.state.name}
+            name = {this.props.name}
             minDate={moment()}
             maxDate={moment().add(5, "months")}
             showDisabledMonthNavigation
             />
-            <label style= {this.state.Estilo}>DESDE</label>
+            <label style= {EstiloCalendarioIn}>DESDE</label>
           </div>
          );
       }

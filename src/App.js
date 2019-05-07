@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
 import BoxSearch from './components/boxSearch.jsx';
 import CampoB from './components/campoB';
+import moment from 'moment';
 import './App.css';
 
 
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = { origen:'', 
+    this.state =  {
+      viajes: {
+        origen:'', 
+        destino: '', 
+        passMen: '', passMax: '', 
+        CalInicio: moment(), CalFin: moment()
+      },  
                     Estilo: {}, 
                     EstiloDes: {}, 
-                    destino: '', 
-                    passMen: '', passMax: '', 
-                    CalInicio: null, CalFin: null}
+                    EstiloCalendario: {},
+                    EstiloCalendarioIn: {},
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChangeSelect = this.handleChangeSelect.bind(this)
     this.handleChangeSelect2 = this.handleChangeSelect2.bind(this)
+    this.handleChangeCalendario = this.handleChangeCalendario.bind(this)
+    this.handleChangeCalendarioIn = this.handleChangeCalendarioIn.bind(this)
   }
 
   hdchange = (e) => {
-    const { value } = e.target
+    const { origen, value } = e.target
     let Style = {}
     if (value.length >= 1) {
        Style = {
@@ -37,7 +47,10 @@ class App extends Component {
             color: '#504f4e3f'
         };
     }
-    this.setState({ origen: value, Estilo: Style });
+    this.setState({ viajes:{
+      ...this.state.viajes,
+      [origen]:value
+    }, Estilo: Style });
 }
 hdChangeDestino = (e) =>{
   const {value} = e.target
@@ -73,15 +86,83 @@ handleChangeSelect2(event) {
   this.setState({passMen: event.target.passMen});
 }
 
+handleChangeCalendario(data) {
+  let Style;
+  if (this.handleChangeCalendarioIn){
+        console.log('hola');
+      Style = {  
+        position: 'absolute',
+        top: '280px',
+        left: '1px',
+        pointerEvents: 'none',
+        fontSize: '15px',
+        fontWeight: 'bold',
+        color: '#ffaa3b',
+        transition: '.5s all'
+      }
+  }else {
+    Style = {
+      position: 'absolute',
+        top: '285px',
+        left: '1px',
+        pointerEvents: 'none',
+        fontSize: '15px',
+        fontWeight: 'bold',
+        color: '#ffaa3b',
+        transition: '.5s all'
+    }
+  }
+this.setState ({ CalFin: data, EstiloCalendario: Style });
+}
+
+handleChangeCalendarioIn(data) {
+  let Style;
+  if (this.handleChangeCalendarioIn === true){
+        console.log('hola');
+      Style = {  
+        position: 'absolute',
+        top: '40px',
+        left: '1px',
+        pointerEvents: 'none',
+        fontSize: '12px',
+        fontWeight: 'bold',
+        color: '#ffaa3b',
+        transition: '.5s all'
+      }
+  }else {
+    console.log('hola');
+    Style = {
+      position: 'absolute',
+        top: '200px',
+        left: '1px',
+        pointerEvents: 'none',
+        fontSize: '15px',
+        fontWeight: 'bold',
+        color: '#ffaa3b',
+        transition: '.5s all'
+    }
+  }
+this.setState ({ CalInicio: data, EstiloCalendarioIn: Style });
+}
+
+handleSubmit = (e) =>{
+  e.preventDefault();
+  const values = 
+  JSON.stringify(this.state.viajes)
+  console.log(values)
+}
 
   render() {
-    const {origen, Estilo, destino, EstiloDes, passMen, passMax, CalFin, CalInicio} = this.state
+    const {Estilo, EstiloDes, EstiloCalendario, EstiloCalendarioIn} = this.state
+    const {origen, destino, passMen, passMax, CalFin, CalInicio} = this.state.viajes
     return (
       <div className="App">
         <BoxSearch/>
         <br/>
           <div className="box">
-            <CampoB origen = {origen}
+          <CampoB 
+            name="primer"
+            origen = {origen}
             destino = {destino}
             passMen = {passMen}
             passMax = {passMax}
@@ -89,9 +170,14 @@ handleChangeSelect2(event) {
             CalInicio = {CalInicio}
             Estilo = {Estilo}
             EstiloDes={EstiloDes}
+            EstiloCalendario={EstiloCalendario}
+            EstiloCalendarioIn={EstiloCalendarioIn}
+            handleSubmit={this.handleSubmit}
             hdChangeDestino={this.hdChangeDestino}
             handleChangeSelect={this.handleChangeSelect}
             handleChangeSelect2={this.handleChangeSelect2}
+            handleChangeCalendario={this.handleChangeCalendario}
+            handleChangeCalendarioIn={this.handleChangeCalendarioIn}
             hdchange ={this.hdchange}
             />
             </div>

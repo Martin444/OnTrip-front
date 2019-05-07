@@ -43,7 +43,7 @@ class inputChanges extends React.Component {
       }
 
     renderSelector(){
-        const {passMen, passMax, CalInicio, CalFin, handleChangeSelect, handleChangeSelect2} = this.props
+        const {passMen, passMax, CalInicio, EstiloCalendario, EstiloCalendarioIn, CalFin, handleChangeSelect, handleChangeSelect2, handleChangeCalendario, handleChangeCalendarioIn} = this.props
         if(this.props.destino.length >= 5){
             return(
                 <div>
@@ -56,10 +56,14 @@ class inputChanges extends React.Component {
                     passMen={passMen}/>
                     <br/>
                     <RangeCalendario 
+                    EstiloCalendarioIn={EstiloCalendarioIn}
+                    handleChangeCalendarioIn={handleChangeCalendarioIn}
                     CalInicio = {CalInicio}
                     className="calendario"/>
                     <br/> <br/>
                     <RangeCalendario2
+                    handleChangeCalendario={handleChangeCalendario}
+                    EstiloCalendario={EstiloCalendario}
                     CalFin= {CalFin}/>
                 </div>
             )
@@ -67,7 +71,7 @@ class inputChanges extends React.Component {
     }
 
       renderDestino2(){
-        const {destino, hdChangeDestino} = this.props
+        const {destino, hdChangeDestino,} = this.props
         if(this.props.origen.length >= 5){
             return(
                 <div>
@@ -94,9 +98,12 @@ class inputChanges extends React.Component {
       }
     
     render() { 
+        
+        const {handleSubmit} = this.props
         return(
             <div>
-                <div className="place"> 
+                <div className="place">
+                <form onSubmit={handleSubmit}>
                     <input className="dir" list="browsers"
                     onChange={this.props.hdchange} 
                     value={this.props.origen}/>
@@ -118,6 +125,8 @@ class inputChanges extends React.Component {
                     {this.renderDestino2()}
                     <br/>
                     {this.renderSelector()}
+                    <button type="submit">Enviar</button>
+                </form> 
                 </div>
             </div>
 );

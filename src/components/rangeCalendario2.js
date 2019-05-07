@@ -5,62 +5,22 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import './rangeCalendario.scss';
 
 class calendar extends React.Component {
-    constructor(...props){
-      super(...props); 
-        this.state ={StartDate: moment(), Estilo:{}};
-  
-        this.handleChange = this.handleChange.bind(this);
-    }
-  
-    
-  
-    handleChange(data) {
-      
-  
-      let Style;
-  
-      if (this.handleChange){
-            console.log('hola');
-          Style = {  
-            position: 'absolute',
-            top: '280px',
-            left: '1px',
-            pointerEvents: 'none',
-            fontSize: '15px',
-            fontWeight: 'bold',
-            color: '#ffaa3b',
-            transition: '.5s all'
-          }
-      }else {
-        Style = {
-          position: 'absolute',
-            top: '285px',
-            left: '1px',
-            pointerEvents: 'none',
-            fontSize: '15px',
-            fontWeight: 'bold',
-            color: '#ffaa3b',
-            transition: '.5s all'
-        }
-      }
-  this.setState ({ StartDate: data, Estilo: Style });
-    }
-  
         render() {
+          const { CalFin, EstiloCalendario, handleChangeCalendario } = this.props
           return (
             <div className="calendar-contenedor">
               <DatePicker
               className="calendar"
-              selected = {this.state.StartDate}
-              onChange = {this.handleChange}
+              selected = {CalFin}
+              onChange = {handleChangeCalendario}
               isClearable = {true}
               dateFormat = "DD/MM/YYYY"
-              name = {this.state.name}
+              name = {this.props.name}
               minDate={moment()}
                 maxDate={moment().add(5, "months")}
                 showDisabledMonthNavigation
               />
-              <label style= {this.state.Estilo}>HASTA</label>
+              <label style= {EstiloCalendario}>HASTA</label>
             </div>
            );
         }
