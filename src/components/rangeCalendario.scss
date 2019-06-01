@@ -14,10 +14,8 @@
     transition: .5s all; 
 }
 
-.calendar-contenedor label {
-    position: absolute;
-    top: 110px;
-    left: 2px;
-    pointer-events: none;
-    color: transparent;
+.calendar-contenedor label{
+    color:rgba(15, 15, 15, 0.781);
+    font-size: 16px;
+    margin-right: 12px;
 }

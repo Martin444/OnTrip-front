@@ -17,6 +17,88 @@ body{
     position: absolute;
 }
 
+.form-container{
+    display: inline-block;
+    position: relative;
+    text-align: left;
+}
+
+.input{
+    width: 100%;
+    height: 30px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #9999; 
+}
+
+.input2{
+    width: 100%;
+    height: 30px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #9999; 
+}
+
+.labelOr{
+    position: absolute;
+    top: 5px;
+    left: 2px;
+    pointer-events: none;
+    color: #504f4e3f;
+}
+
+.labelOrFocus{
+    top: -15px;
+    position: absolute;
+    left: 0;
+    color: #ffaa3b;
+    font-size: 15px;
+    font-weight: bold;
+    transition: .2s all;
+}
+
+.input:focus ~ .labelOr{
+    top: -10px;
+    left: 0;
+    color: #ffaa3b;
+    font-size: 15px;
+    font-weight: bold;
+    transition: .2s all;
+}
+
+.input2:focus ~ .destino{
+    top: 43px;
+    left: 0;
+    color: #ffaa3b;
+    font-size: 15px;
+    font-weight: bold;
+    transition: .2s all;
+}
+
+.destino{
+    position: absolute;
+    top: 60px;
+    left: 2px;
+    pointer-events: none;
+    color: #504f4e3f;
+}
+
+.destinoFocus{
+    top: 40px;
+    position: absolute;
+    left: 0;
+    color: #ffaa3b;
+    font-size: 15px;
+    font-weight: bold;
+    transition: .2s all;
+}
+
 .center {
     position: fixed;
     display: flex;
@@ -43,16 +125,42 @@ body{
 .cal-sel {
     width: 100%;    
     display: inline-table;
-    margin-left: 2px;
+    margin-bottom: 7px;
     position: relative;
     justify-content: flex-end;
 }
 
-.calendario{
-    margin: 4px;
+.pasajeros-cont{
+    margin-bottom: 15px;
+}
+
+.calendario-cont{
+    margin-bottom: 18px;
     padding: 2px;
     display: flex;
     position: relative;
+}
+
+.calendario-cont label {
+    color:rgba(15, 15, 15, 0.781);
+    font-size: 16px;
+    margin-right: 12px;
+}
+
+.btn-primary{
+    width: 120px;
+    height: 50px;
+    
+    background: #ffaa3b;
+    color:#ffff;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.btn-primary:hover{
+    box-shadow: 5px 2px 5px 1px rgba(100,100,100,0.5);
 }
 
 .estad{

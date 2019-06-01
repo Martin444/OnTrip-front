@@ -4,108 +4,22 @@ import CamSelect from './camSelect.jsx';
 import LamSelect from './lamSelect.jsx';
 import RangeCalendario from './rangeCalendario.js';
 import RangeCalendario2 from './rangeCalendario2';
+import Form from './form.js'
 import './campoB.scss';
 
 // const API = 'http://31.220.59.183:8080/locations?filter=';
 // const DEFAULT_QUERY = "PAR";
 class inputChanges extends React.Component {
 
-    constructor(props) {
-        super(props)
-        this.state = { Loc: null , 
-                        EstiloDes: {} };
-
-        this.hdChangeDestino = this.hdChangeDestino.bind(this)
-    }
-
-    hdChangeDestino = (e) =>{
-        const {value} = e.target
-        let Style2 = {}
-        if (value.length >= 1) {
-            Style2 = {
-                top: '45px',
-                left: '0',
-                fontSize: '15px',
-                fontWeight: 'bold',
-                color: '#ffaa3b',
-                transition: '.2s all'
-            };
-        } else {
-            Style2 = {
-                position: 'absolute',
-                top: '45px',
-                left: '2px',
-                color: '#504f4e3f'
-            };
-        }
-    
-        this.setState({ destino: value,  EstiloDes: Style2  })
-      }
-
-    renderSelector(){
-        const {passMen, passMax, CalInicio, EstiloCalendario, EstiloCalendarioIn, CalFin, handleChangeSelect, handleChangeSelect2, handleChangeCalendario, handleChangeCalendarioIn} = this.props
-        if(this.props.destino.length >= 5){
-            return(
-                <div>
-                    <CamSelect 
-                    handleChangeSelect={handleChangeSelect}
-                    passMax={passMax}/>
-                    <br/>
-                    <LamSelect 
-                    handleChangeSelect2={handleChangeSelect2}
-                    passMen={passMen}/>
-                    <br/>
-                    <RangeCalendario 
-                    EstiloCalendarioIn={EstiloCalendarioIn}
-                    handleChangeCalendarioIn={handleChangeCalendarioIn}
-                    CalInicio = {CalInicio}
-                    className="calendario"/>
-                    <br/> <br/>
-                    <RangeCalendario2
-                    handleChangeCalendario={handleChangeCalendario}
-                    EstiloCalendario={EstiloCalendario}
-                    CalFin= {CalFin}/>
-                </div>
-            )
-        }
-    }
-
-      renderDestino2(){
-        const {destino, hdChangeDestino,} = this.props
-        if(this.props.origen.length >= 5){
-            return(
-                <div>
-                    <input className="dest" list="browsers"
-                    onChange={hdChangeDestino}
-                    value={destino}/>
-                        <label className="labdes" style={this.props.EstiloDes}>DESTINO</label>
-                            <div>
-                                <datalist id="browsers">
-                                {
-                                    this.state.Loc ?
-                                        this.state.Loc.map((items)=>
-                                            <React.Fragment>
-                                                <option className="lista" value={(items.name) + ", " + (items.address.countryName)}/>
-                                            </React.Fragment>
-                                            )
-                                                :null
-                                }
-                                </datalist>
-                            </div>
-                </div>
-            )
-        }
-      }
     
     render() { 
         
-        const {handleSubmit} = this.props
         return(
             <div>
                 <div className="place">
-                <form onSubmit={handleSubmit}>
+                {/* <form onSubmit={handleSubmit}>
                     <input className="dir" list="browsers"
-                    onChange={this.props.hdchange} 
+                    onChange={hdchange} 
                     value={this.props.origen}/>
                         <label className="labori" style={this.props.Estilo}>ORIGEN</label>
                             <div>
@@ -126,7 +40,8 @@ class inputChanges extends React.Component {
                     <br/>
                     {this.renderSelector()}
                     <button type="submit">Enviar</button>
-                </form> 
+                </form>  */}
+                <Form/>
                 </div>
             </div>
 );

@@ -6,21 +6,21 @@ import './rangeCalendario.scss';
 
 class calendar extends React.Component {
         render() {
-          const { CalFin, EstiloCalendario, handleChangeCalendario } = this.props
+          const { CalFin, handleChangeCalendario, CalInicio } = this.props
           return (
             <div className="calendar-contenedor">
+              <label >HASTA</label>
               <DatePicker
               className="calendar"
               selected = {CalFin}
               onChange = {handleChangeCalendario}
-              isClearable = {true}
+              isClearable = {false}
               dateFormat = "DD/MM/YYYY"
               name = {this.props.name}
-              minDate={moment()}
+              minDate={CalInicio}
                 maxDate={moment().add(5, "months")}
                 showDisabledMonthNavigation
               />
-              <label style= {EstiloCalendario}>HASTA</label>
             </div>
            );
         }
