@@ -11,7 +11,8 @@ export default class TripProvider extends Component {
             destino: '', 
             passMen: '', passMax: '', 
             CalInicio: moment(), 
-            CalFin: moment()
+            CalFin: moment(),
+            newTrip: []
 
         
     }
@@ -65,7 +66,11 @@ export default class TripProvider extends Component {
             CalInicio: this.state.CalInicio,
             CalFin: this.state.CalFin
         }
-        console.log(newTrip);
+       
+
+        this.setState({
+            newTrip:newTrip
+        })
 
         const UpdateTrip = {...this.state.viajes, newTrip}
 
@@ -76,11 +81,10 @@ export default class TripProvider extends Component {
             passMen: '', 
             passMax: '', 
             CalInicio: moment(), 
-            CalFin: moment()
+            CalFin: moment(),
             
-        }, ()=> console.log(UpdateTrip))
+        },)
     }
-
 
     render() {
         return (

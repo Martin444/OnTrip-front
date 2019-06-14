@@ -2,14 +2,16 @@ import React, { Component } from 'react'
 import {TripContext} from '../context'
 
 import RangeCalendario2 from './rangeCalendario2'
+import List from './list'
 
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
+
 export default class form extends Component {
 
     static contextType = TripContext;
-    
+
     render() {
         const {origen,
             destino,
@@ -17,6 +19,7 @@ export default class form extends Component {
             passMax,
             CalInicio,
             CalFin, 
+            newTrip,
             handleChange,
             handleChangeDestino, 
             handleChangeSelect, 
@@ -26,7 +29,8 @@ export default class form extends Component {
             handleSubmit} = this.context
 
         return (
-            <div className="form-container">
+        <div>
+             <div className="form-container">
                <form onSubmit={handleSubmit}>
                    {/* Origen */}
                     <input className="input" list="browsers"
@@ -93,8 +97,13 @@ export default class form extends Component {
                         </div>
                             
                  <button type="submit" className="btn-primary">Buscar</button>
+                 <button type="button" className="btn-secundary">Agregar</button>
                 </form>
             </div>
+            <List newTrip = {newTrip}/>
+        </div>
+
+           
         )
     }
 }

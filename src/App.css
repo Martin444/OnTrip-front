@@ -111,15 +111,15 @@ body{
     box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
     margin: 2px;
-    width: 40%;
+    width: 45%;
     height: 5%;
     display: inline-table;
     align-items: center;
     justify-content: center;
     top: 20%;
-    left: 25%;
+    left: 30%;
     padding: 30px 40px;
-    position: fixed;
+    position: relative;
 }
 
 .cal-sel {
@@ -150,7 +150,6 @@ body{
 .btn-primary{
     width: 120px;
     height: 50px;
-    
     background: #ffaa3b;
     color:#ffff;
     font-size: 20px;
@@ -159,8 +158,28 @@ body{
     text-align: center;
 }
 
+.btn-secundary{
+    width: 120px;
+    height: 50px;
+    margin-left: 10px;
+    background: #cccccc;
+    font-size: 20px;
+    color: #ffff;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+}
+
 .btn-primary:hover{
-    box-shadow: 5px 2px 5px 1px rgba(100,100,100,0.5);
+    transition: 0.5s all;
+    box-shadow: 0px 2px 24px 0px rgba(158, 109, 109, 0.356);
+    cursor: pointer;
+}
+
+.btn-secundary:hover{
+    transition: 0.5s all;
+    box-shadow: 0px 2px 24px 0px rgba(158, 109, 109, 0.356);
+    cursor: pointer;
 }
 
 .estad{

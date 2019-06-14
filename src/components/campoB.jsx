@@ -5,7 +5,7 @@ import LamSelect from './lamSelect.jsx';
 import RangeCalendario from './rangeCalendario.js';
 import RangeCalendario2 from './rangeCalendario2';
 import Form from './form.js'
-import './campoB.scss';
+import List from './list'
 
 // const API = 'http://31.220.59.183:8080/locations?filter=';
 // const DEFAULT_QUERY = "PAR";
