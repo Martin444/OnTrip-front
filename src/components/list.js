@@ -1,43 +1,35 @@
 import React, { Component } from 'react'
-import {TripContext} from '../context'
+import ListItems from './ListItems'
+
 
 export default class list extends Component {
-    
-    state = {
-        viajes: []
-    }
-    
-    static contextType = TripContext;
 
-    componentDidUpdate = () => {
-        const {newTrip} = this.props
-            
-        if(newTrip === null){
-            console.log("hubo un error");
-        }else {
-                this.setState({
-                    viajes: newTrip
-                },()=> console.log(this.state.viajes))
-        }
-        
-    }
-    
+ 
+
     
     render() {
-        const {viajes} = this.state
-        
-        return(
-            <div>{viajes.map(item => {return(
-                <div>
-                    <p>{item.origen}</p>
-                </div>
-            )})
+        const newTrip = this.props.trips
+        console.log( typeof newTrip);
+        if(newTrip){
+            newTrip.map(trip =>{
+                return(
+                    <div>
+                <ul className="list-group my-5">
+                    <h3>Destinos</h3>
 
-            }
+                    <ListItems key={trip.id} title={trip.destino}></ListItems>
+    
+                    <button type="button" className="btn btn-danger btn-block">limpiar destinos</button>
+                </ul>
             </div>
-               
-        )
+                )
+            })
+        }else{
+            return(
+                <div>
+                    hubo un error
+                </div>
+            )
+        }
     
-    }
-    
-    }
+    }}
