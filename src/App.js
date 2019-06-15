@@ -74,6 +74,7 @@ handleSubmit = e => {
 
   this.setState({
       trips: UpdateTrip,
+      id: uuid(),
       origen:'',
       destino: '', 
       passMen: '', 

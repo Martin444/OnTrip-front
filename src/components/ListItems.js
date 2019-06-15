@@ -5,8 +5,8 @@ export default class ListItems extends Component {
         const {title} = this.props
         return (
             <div>
-                <li>
-                    <h6>{title}</h6>
+                <li >
+                    <h6 >{title}</h6>
                 </li>
             </div>
         )

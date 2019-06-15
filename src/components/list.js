@@ -9,31 +9,22 @@ export default class list extends Component {
     
     render() {
         const newTrip = this.props.trips
-        console.log( newTrip);
+        console.log( Object.values(newTrip));
         return(
             <div>
-                {
-                    newTrip?
-            Array.from(newTrip).map(trip =>{
-                return(
+                <h3>Destinos</h3>
                     <div>
                 <ul className="list-group my-5">
-                    <h3>Destinos</h3>
-
-                    <ListItems key={trip.newTrip.id} title={trip.newTrip.destino}></ListItems>
-    
-                    <button type="button" className="btn btn-danger btn-block">limpiar destinos</button>
-                </ul>
-            </div>
+                {
+            Object.values(newTrip).map(trip =>{
+                return(
+                    <ListItems key={trip.id} title={trip.destino}></ListItems>
                 )
-            })
-        :
-          
-                <div>
-                    hubo un error
-                </div>
-            
+                })
         }
+        <button type="button" className="btn btn-danger btn-block">limpiar destinos</button>
+        </ul>
+    </div>
                 
             </div>
         )
