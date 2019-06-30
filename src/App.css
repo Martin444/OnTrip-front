@@ -195,3 +195,20 @@ body{
     padding: 30px 40px;
     position: absolute;
 }
+
+/* tabla */
+
+table, td, th {  
+    border: 1px solid #ddd;
+    text-align: left;
+    width: 20%;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 20px;
+  }
+  
+  th, td {
+    padding: 15px;
+  }
